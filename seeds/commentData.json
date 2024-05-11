@@ -1,0 +1,22 @@
+[
+    [
+        {
+            "comment": "Great post!",
+            "dateCreated": "2022-10-01",
+            "userId": 1,
+            "postId": 1
+        },
+        {
+            "comment": "I found this very helpful.",
+            "dateCreated": "2022-10-02",
+            "userId": 3,
+            "postId": 2
+        },
+        {
+            "comment": "Looking forward to more content like this.",
+            "dateCreated": "2022-10-03",
+            "userId": 2,
+            "postId": 3
+        }
+    ]
+]
