@@ -1,19 +1,21 @@
-[
+
   [
     {
       "title": "First Blog Post",
-      "post_text": "This is the content of my first blog post.",
-      "user_id": 1
+      "post": "This is the content of my first blog post.",
+      "userId": 1,
+      "dateCreated": "2022-01-01"
     },
     {
       "title": "Second Blog Post",
-      "post_text": "This is the content of my second blog post.",
-      "user_id": 2
+      "post": "This is the content of my second blog post.",
+      "userId": 2,
+      "dateCreated": "2022-01-02"
     },
     {
       "title": "Third Blog Post",
-      "post_text": "This is the content of my third blog post.",
-      "user_id": 1
+      "post": "This is the content of my third blog post.",
+      "userId": 1,
+      "dateCreated": "2022-01-03"
     }
   ]
-]

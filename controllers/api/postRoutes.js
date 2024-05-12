@@ -11,13 +11,14 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['email'],
                 },
             ],
         });
         res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
+        console.log("unable to findd",err);
     }
 });
 
@@ -28,14 +29,14 @@ router.get('/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['email'],
                 },
                 {
                     model: Comment,
                     attributes: ['comment', 'dateCreated'],
                     include: {
                         model: User,
-                        attributes: ['name'],
+                        attributes: ['email'],
                     },
                 },
             ],
@@ -52,7 +53,7 @@ router.get('/:id', async (req, res) => {
 
 // * create a new post
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const postData = await Post.create({
             title: req.body.title,
@@ -67,7 +68,7 @@ router.post('/', withAuth, async (req, res) => {
 
 // * update a post
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const postData = await Post.update(req.body, {
             where: {
@@ -86,7 +87,7 @@ router.put('/:id', withAuth, async (req, res) => {
 
 // * delete a post
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id',async (req, res) => {
     try {
         const postData = await Post.destroy({
             where: {

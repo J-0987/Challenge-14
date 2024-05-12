@@ -1,7 +1,21 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+// * route to GET all users
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// * sign up route to create user
+
 router.post('/', async (req, res) => {
+  console.log("USER",req.body)
   try {
     const userData = await User.create(req.body);
 
@@ -15,6 +29,8 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// * login route to check user credentials
 
 router.post('/login', async (req, res) => {
   try {
@@ -47,6 +63,8 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//* logout route to destroy session
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

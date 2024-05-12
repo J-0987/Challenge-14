@@ -1,4 +1,13 @@
+//form to add comment
+<form action="{{action}}" method="post">
+    <label for="title">Comment:</label>
+    <input type="text" id="title" name="title">
+
+    <input type="submit" value="Submit">
+</form>
+
+// for each
 <div>
-    <p>{{comment}}</p>
-    <p>Commented by {{username}} on {{dateCreated}}</p>
+    <p>{{comment.comment}}</p>
+    <p>Commented by {{user.email}} on {{comment.dateCreated}}</p>
 </div>

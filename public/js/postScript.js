@@ -1,0 +1,1 @@
+// script for form - posting new content. Route to create a new post
