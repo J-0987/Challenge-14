@@ -15,8 +15,12 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
-        res.status(200).json(postData);
-    } catch (err) {
+
+        let myPosts = postData.map((post) => post.get({ plain: true }));
+        console.log("post data",myPosts);
+        res.render("post",{posts:myPosts})
+    //    res.status(200).json(postData);
+    } catch (err) { 
         res.status(500).json(err);
         console.log("unable to findd",err);
     }
@@ -43,7 +47,7 @@ router.get('/:id', async (req, res) => {
         });
         if (!postData) {
             res.status(404).json({ message: 'No post found with that id!' });
-            return;
+           // return;
         }
         res.status(200).json(postData);
     } catch (err) {
@@ -53,24 +57,27 @@ router.get('/:id', async (req, res) => {
 
 // * create a new post
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
+    console.log("post data",req.body,req.session.user_id);
     try {
         const postData = await Post.create({
             title: req.body.title,
             post: req.body.post,
-            userId: req.session.userId,
+            userId: req.session.user_id,
         });
+    //    console.log("post data",postData)
         res.status(200).json(postData);
     } catch (err) {
+        console.log("Error adding post",err)
         res.status(400).json(err);
     }
 });
 
 // * update a post
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.update(req.body, {
+        const postData = await Post.update(req.body.post, {
             where: {
                 id: req.params.id,
             },

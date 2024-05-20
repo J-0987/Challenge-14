@@ -1,5 +1,7 @@
 const loginFormHandler = async (event) => {
-  // Prevents the default action of the form from happening
+  const loginBtn = document.querySelector('#loginButton');
+  
+    // Prevents the default action of the form from happening
   event.preventDefault();
 
   // Grabs the values from the email and password from the form and trims any whitespace
@@ -7,7 +9,7 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#passwordLogin').value.trim();
 
   if (email && password) {
-      // TODO: Add a comment describing the functionality of this expression
+      
       // Sends a POST request to the server with the email and password
       const response = await fetch('/api/users/login', {
           method: 'POST',
@@ -16,7 +18,7 @@ const loginFormHandler = async (event) => {
       });
 
       if (response.ok) {
-          document.location.replace('/post');
+          document.location.replace('/api/posts');
       } else {
           alert('Failed to log in');
       }
@@ -40,13 +42,14 @@ const signUpHandler = async (event) => {
       });
 
       if (response.ok) {
-          document.location.replace('/post');
+          document.location.replace('api/posts');
       } else {
           alert('Failed to sign up');
       }
   }
 };
 
+loginBtn.addEventListener('click', loginFormHandler);
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
@@ -54,6 +57,5 @@ document
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signUpHandler);
-
 
   console.log("LOGIN JS")
