@@ -2,7 +2,7 @@
 // * import the necessary models
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { Post, User, Comment } = require('../../models');
+const { Post} = require('../../models');
 
 // * View all posts
 router.get('/', async (req, res) => {
@@ -57,31 +57,50 @@ router.get('/:id', async (req, res) => {
 
 // * create a new post
 
+// router.post('/', withAuth, async (req, res) => {
+//     // console.log("post data",req.body,req.session.user_id);
+//     try {
+//         const postData = await Post.create({
+//             title: req.body.title,
+//             post: req.body.post,
+//             userId: req.session.user_id,
+//         });
+//     //    console.log("post data",postData)
+//         res.status(200).json(postData);
+//     } catch (err) {
+//         console.log("Error adding post",err)
+//         res.status(400).json(err);
+//     }
+// });
+
 router.post('/', withAuth, async (req, res) => {
-    console.log("post data",req.body,req.session.user_id);
     try {
-        const postData = await Post.create({
-            title: req.body.title,
-            post: req.body.post,
-            userId: req.session.user_id,
-        });
-    //    console.log("post data",postData)
-        res.status(200).json(postData);
+      const newPost = await Post.create({
+        ...req.body,
+        user_id: req.session.user_id,
+      });
+  
+      res.status(200).json(newPost);
     } catch (err) {
-        console.log("Error adding post",err)
-        res.status(400).json(err);
+      res.status(400).json(err);
     }
-});
+  });
 
 // * update a post
 
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.update(req.body.post, {
+        const postData = await Post.update({
+            title: req.body.title,
+            content: req.body.content,
+          },
+          {
             where: {
-                id: req.params.id,
+              id: req.params.id,
+              user_id: req.session.user_id,
             },
-        });
+          }
+        );
         if (!postData) {
             res.status(404).json({ message: 'No post found with that id!' });
             return;
@@ -99,6 +118,7 @@ router.delete('/:id',async (req, res) => {
         const postData = await Post.destroy({
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
         if (!postData) {
