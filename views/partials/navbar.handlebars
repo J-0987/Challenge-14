@@ -1,0 +1,15 @@
+<!-- views/partials/navbar.handlebars -->
+<nav>
+  <div class="logo">
+    <h1>The Tech Blog</h1>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    {{#if logged_in}}
+    <li><button id="logout">Logout</button></li>
+    {{else}}
+    <li><a href="/login">Login</a></li>
+    {{/if}}
+  </ul>
+</nav>

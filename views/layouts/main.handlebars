@@ -13,23 +13,10 @@
 </head>
 
 <body>
-    <header>
-        <!-- Navigation links -->
-        <nav>
-            <ul class="navbar-nav">
-
-                     {{#if logged_in}}
-   
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-            </ul>
-        </nav>
+   <header>
+        {{ navbar}}
     </header>
-
     <main>
-        <!-- Content will be inserted here -->
         {{{body}}}
     </main>
 

@@ -1,0 +1,26 @@
+<h2>Your Posts</h2>
+<ul id="post-list">
+  {{#each userPosts}}
+    <li>
+      <h3>{{this.title}}</h3>
+      <p>{{this.date_created}}</p>
+      <p>{{this.content}}</p>
+      <button data-id="{{this.id}}" class="edit-post-btn">Edit</button>
+      <button data-id="{{this.id}}" class="delete-post-btn">Delete</button>
+    </li>
+  {{/each}}
+</ul>
+<a href="/create-post">Create New Post</a>
+
+<!-- Edit Post Modal -->
+<div id="edit-post-modal" style="display: none;">
+  <form id="edit-post-form">
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" name="title">
+    <label for="post-content">Content:</label>
+    <textarea id="post-content" name="content"></textarea>
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<script src="/js/dashboard.js"></script>

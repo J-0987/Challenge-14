@@ -1,36 +1,10 @@
-<header>
-       
-<h2>POST</h2>
-    </header>
-
-
-
-<div class="mb-3">
-    <label for="post title" class="form-label">Blog Post:</label>
-    <input type="text" class="form-control" id="postTitle" placeholder="title">
-    <div class="mb-3">
-  <label for="post input" class="form-label">Post Content</label>
-  <textarea class="form-control" id="postInput" rows="3"></textarea>
-</div>
-</div>
-<div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3" id="postBtn">Add Post</button>
-</div>
-
-
-{{#each posts as |post|}}
-<div id="postCard">
-    <h2>{{post.title}}</h2>
-    <p>{{post.post}}</p>
-    <p>Posted by {{post.user.email}} on: {{post.dateCreated}}</p>
-     {{!-- <button type="delete" class="btn btn-primary mb-3" id="delPostBtn">Delete post</button> --}}
-    
-</div>
-{{!-- <form class="editPostForm" data-id="{{this.id}}">
-        <textarea class="editPostInput">{{this.post}}</textarea>
-        <button class="updatePostBtn">Update Post</button>
-    </form> --}}
-{{/each}}
-
-<script src="/js/postScript.js"></script>
-
+<!-- views/create-post.handlebars -->
+    <main>
+        <h1>Create New Post</h1>
+        <form id="new-post-form">
+            <input type="text" id="post-title" name="title" placeholder="Title" required>
+            <textarea id="post-content" name="content" placeholder="Content" required></textarea>
+            <button type="submit">Create Post</button>
+        </form>
+    </main>
+    <script src="/js/create-post.js"></script>

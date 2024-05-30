@@ -1,53 +1,8 @@
-<div class="background" id="backgroundDiv">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
-<div class="container-fluid mt-5">
-    <div class="row mb-5">
-        <div class="col-4 mt-5 mb-5"></div>
-        <div class="col-4 mt-5 mb-5"></div>
-        <div class="col-4 mt-5 mb-5"></div>
-    </div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-3 mt-5">
-            <div class="card bg-light shadow-dark p-4" id="loginDiv">
-                <h1 class="text-dark" id="loginTitle">Login</h1>
-                <form action="/login" method="POST" class="login-form">
-                    <div class="mb-3">
-                        <label for="username" class="form-label text-dark" id="usernameLabel">Email</label>
-                        <input type="text" class="form-control" id="usernameLogin" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label text-dark" id="passwordLabel">Password</label>
-                        <input type="password" class="form-control" id="passwordLogin" name="password" required>
-                    </div>
-                    <button type="submit" class="btn btn-dark" id="loginBtn">Login</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-2"></div>
-        <div class="col-3 mt-5">
-            <div class="card bg-light shadow-dark p-4" id="signupDiv">
-                <h1 class="text-dark" id="signupTitle">Sign-up</h1>
-                <form action="/login" method="POST" class="signup-form">
-                    <div class="mb-3">
-                        
-                        <label for="username" class="form-label text-dark" id="usernameLabelSignup">Email</label>
-                        <input type="text" class="form-control" id="usernameSignup" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label text-dark" id="passwordLabelSignup">Password</label>
-                        <input type="password" class="form-control" id="passwordSignup" name="password" required>
-                    </div>
-                    <button type="submit" class="btn btn-dark" id="signupBtn">Sign-up</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-2"></div>
-    </div>
-</div>
+]<h1>Login</h1>
+<form id="login-form" class="login-form">
+    <input type="text" id="username-login" name="username" placeholder="Username" required>
+    <input type="password" id="password-login" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form>
 
-<script src="./js/loginScript.js"></script>
+<script src="/js/login.js"></script>

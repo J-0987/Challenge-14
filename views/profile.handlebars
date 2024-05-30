@@ -1,0 +1,14 @@
+<h1>Profile</h1>
+<h2>{{username}}</h2>
+<p>{{email}}</p>
+
+<h3>Your Posts</h3>
+{{#each posts}}
+<div class="post">
+    <h2><a href="/post/{{id}}">{{title}}</a></h2>
+    <p>{{content}}</p>
+    <small>Posted by {{user.username}} on {{format_date createdAt}}</small>
+</div>
+{{/each}}
+
+<script src="/js/logout.js"></script>
